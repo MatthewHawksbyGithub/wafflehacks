@@ -4,7 +4,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 
-
 const configuration =  new Configuration({
   organization: "org-mtnx3paq9vdUscGbK1znT4p4",
   apiKey: "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",
@@ -28,7 +27,7 @@ app.post("/", async (req, res) => {
     model: "gpt-3.5-turbo",
     messages: [
       {
-        role: "user", content: '${message}'},
+        role: "user", content:  `Please respond using simple but correct language. If I ask you a question, answer it in simple language. If I give you text, simplify it. If I ask you to explain something, respond in simple language.  ${message}`},
     ]
   })
 
@@ -39,8 +38,9 @@ app.post("/", async (req, res) => {
 });
 
 app.listen(port, () => (
-  console.log("example app listening")
-))
+  console.log(`example app listening at port https://localhost:${ port }`)
+  ));
+
 
 
 

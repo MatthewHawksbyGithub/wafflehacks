@@ -1,6 +1,5 @@
 body{
     display:flex;
-    font-weight: bold;
     flex-direction:column;
     align-items: center;
     justify-content: center;
@@ -8,12 +7,15 @@ body{
 
 .submit{
     font-weight:bold;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .boxes{
     display:flex;
 }
-/*test*/
+
 .textbox {
     display:flex;
     justify-content:center;
@@ -21,18 +23,30 @@ body{
     background-color:lightgray;
     width: 440px;
     height: 540px;
-    font-size: 24px;
     margin: 20px;
     padding:40px;
     margin-right:20px;
     border-radius: 10px;
+    font-family:"arial";
 }  
 
+.message__text{
+    font-size:18px;
+    font-family:"arial";
+}
+
+.response{
+    text-align:end;
+    font-size:18px;
+    font-style:italic;
+    font-family:"arial";
+}
+
 .displayBox {
+    display:flex;
     justify-content:center;
     align-items:center;
     background-color:lightgray;
-    display:flex;
     width: 440px;
     height: 540px;
     margin: 20px;
@@ -50,13 +64,13 @@ button{
     border-color: solid lightgray;
 }
 
-p{
+.whitedisplay{
     background-color:white;
     width:420px;
     height:520px;
     border: solid darkgray;
     resize:none;
-    font-size:20px;
+    font-size:18px;
 }
 
 textarea {
@@ -64,5 +78,6 @@ textarea {
     height:520px;
     border: solid darkgray;
     resize:none;
-    font-size:20px;
+    font-size:18px;
+    font-family: "arial";
 }

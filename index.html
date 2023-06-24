@@ -9,28 +9,27 @@
 <body>
     <div class = "boxes">
         <div class = "textbox">
-                <form action = "">
-                    <textarea type="text" class="textBox" name = "message" id = "message">"Complicated text goes here, MULTILINE TEXT GOES HERE."</textarea>
-                    <button type = "submit">Send</button>
-                </form>
+            <form action = "">
+                <textarea type="text" class="textBox" name = "message" id = "message">Explain to me what coffee is.</textarea>
+            </form>
         </div>
-        <div class = "displayBox">
-            <div id = chat-log>
-
-            </div> 
-            <p>"SAMPLE OUTPUT TEXT GOES HERE, THIS IS ALSO MULTILINE"</p></div>
+        <div class="displayBox">
+            <div class="whitedisplay">
+                <div id='chat-log'>
+                </div>
+            </div>
+        </div>
     </div>
-
     <div class = "submit" action = "">
-        <button type = "submit">Simplify!</button>
+        <button id="simplify" type = "submit">Simplify!</button>
     </div>
     <script>
         const chatlog = document.getElementById('chat-log');
         const message = document.getElementById('message');
         const form = document.querySelector('form');
-        form.addEventListener('submit', (e) => {
+        const simplify = document.getElementById('simplify')
+        simplify.addEventListener('click', (e) => {
             e.preventDefault();
-            const messageText = message.value;
             message.value = '';
             const messageElement =  document.createElement('div')
             messageElement.classList.add('message');
@@ -38,8 +37,8 @@
             messageElement.innerHTML =`<div class = "message__text">${messageText}</div>`;
                 chatlog.appendChild(messageElement);
                 chatlog.scrollTop = chatlog.scrollHeight;
-                fetch('http://localhost:3000', {
-                    method: 'POST',
+                fetch("http://localhost:3000", {
+                    method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -52,8 +51,9 @@
                     const messageElement = document.createElement('div');
                     messageElement.classList.add('message');
                     messageElement.classList.add('message--received');
+                    messageElement.classList.add('response');
                     messageElement.innerHTML = 
-                        `<div class="message__text">${data.completion.content}</div>`
+                        `<div class="message__text" class = "response">${data.completion.content}<p><br></p></div>`
                     chatlog.appendChild(messageElement);
                     chatlog.scrollTop = chatlog.scrollheight;
                 })
