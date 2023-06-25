@@ -10,11 +10,11 @@
     <div class = "boxes">
         <div class = "textbox">
             <form action = "">
-                <textarea type="text" class="textBox" name = "message" id = "message">Explain to me what coffee is.</textarea>
+                <textarea type="text" name = "message" id = "message">Explain to me what coffee is.</textarea>
             </form>
         </div>
         <div class="displayBox">
-            <div class="whitedisplay">
+            <div class="whitedisplay" id="whitedisplay">
                 <div id='chat-log'>
                 </div>
             </div>
@@ -30,6 +30,7 @@
         const simplify = document.getElementById('simplify')
         simplify.addEventListener('click', (e) => {
             e.preventDefault();
+            const messageText = message.value;
             message.value = '';
             const messageElement =  document.createElement('div')
             messageElement.classList.add('message');
@@ -53,9 +54,10 @@
                     messageElement.classList.add('message--received');
                     messageElement.classList.add('response');
                     messageElement.innerHTML = 
-                        `<div class="message__text" class = "response">${data.completion.content}<p><br></p></div>`
+                        `<div class="message__text" class = "response">${data.completion.content}<p></p></div>`
                     chatlog.appendChild(messageElement);
-                    chatlog.scrollTop = chatlog.scrollheight;
+                    chatlog.scrollIntoView();
+                    messageElement.scrollIntoView();
                 })
         })
 
